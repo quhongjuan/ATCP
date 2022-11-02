@@ -57,10 +57,10 @@ def process(data_dir, max_len, output_path):
 
     asts = [ast for i, ast in enumerate(asts) if not is_skipped[i]]
 
-    root_list = MyAst.process_ast(asts, split_leaf=False, max_size=max_len)
-
-    MyAst.collect_matrices_and_save(root_list, output_path + 'un_split_matrices.npz', output_path + 'un_split_pot.seq')
-    MyAst.collect_seq_and_save(root_list, output_path + 'un_split_sbt.seq', 'sbt')
+    # root_list = MyAst.process_ast(asts, split_leaf=False, max_size=max_len)
+    #
+    # MyAst.collect_matrices_and_save(root_list, output_path + 'un_split_matrices.npz', output_path + 'un_split_pot.seq')
+    # MyAst.collect_seq_and_save(root_list, output_path + 'un_split_sbt.seq', 'sbt')
 
     root_list = MyAst.process_ast(asts, split_leaf=True, max_size=max_len)
 
@@ -76,9 +76,11 @@ if __name__ == '__main__':
     data_set_dir = args.data_dir
     max_ast_len = args.max_ast_len
 
-    languages = ['java/', 'py/']
+    # languages = ['java/', 'py/']
+    languages = ['java/']
     data_sets = ['test/', 'dev/', 'train/']
-
+    # languages = ['java/']
+    # data_sets = [ 'test/']
     if args.process:
         for lang in languages:
             for data_set in data_sets:

@@ -88,7 +88,9 @@ def load_vocab(data_dir, is_split, data_type):
         src_vocab.load()
     nl_vocab = Vocab(need_bos=True, file_path=data_dir + '/vocab/' + 'nl_vocab.pkl')
     nl_vocab.load()
-    return src_vocab, nl_vocab
+    code_vocab = Vocab(need_bos=True, file_path=data_dir + '/vocab/' + 'code_vocab.pkl')
+    code_vocab.load()
+    return src_vocab, nl_vocab,code_vocab
 
 
 def create_vocab(data_dir):

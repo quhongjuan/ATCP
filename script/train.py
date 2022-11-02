@@ -34,7 +34,7 @@ valid_bleu = None
 
 
 def get_model(config):
-    model = config.model(config.src_vocab.size(), config.tgt_vocab.size(),
+    model = config.model(config.src_vocab.size(), config.tgt_vocab.size(),config.code_vocab.size(),
                          config.hidden_size,
                          config.par_heads, config.num_heads,
                          config.max_rel_pos,
@@ -321,7 +321,7 @@ def run(config, hype_params=None):
     if config.fast_mod:
         config.use_clearml = False
 
-    config.src_vocab, config.tgt_vocab = load_vocab(config.data_dir, config.is_split, config.data_type)
+    config.src_vocab, config.tgt_vocab, config.code_vocab = load_vocab(config.data_dir, config.is_split, config.data_type)
 
     logger = setup_logger(name='AST Transformer Training', distributed_rank=idist.get_rank())
     logger.info('Hype-Params: ' + params2str(hype_params))
